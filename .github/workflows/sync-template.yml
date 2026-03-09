@@ -1,0 +1,25 @@
+name: Sync Template Updates
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check for updates
+        run: |
+          # Fetch latest patterns from community
+          # (placeholder — expand based on needs)
+          echo "Checking for framework updates..."
+      
+      - name: Create PR if changes
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "chore: Update framework detection patterns"
+          body: "Auto-generated PR to sync latest patterns"
+          branch: sync-template-updates
